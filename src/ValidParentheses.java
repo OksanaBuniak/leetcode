@@ -30,12 +30,16 @@ public class ValidParentheses {
     }
 
     public static void main(String[] args) {
-        //String input = "(){}[](){}(}";
-        //String input = "([)]{})(";
-        //String input = "(){[}]{)(}";
-        String input = "([{}])";
-        //String input = "){";
+        String input = "(){}[](){}(}";
+        String input1 = "([)]{})(";
+        String input2 = "(){[}]{)(}";
+        String input3 = "([{}])";
+        String input4 = "){";
         System.out.println(isValid(input));
+        System.out.println(isValid(input1));
+        System.out.println(isValid(input2));
+        System.out.println(isValid(input3));
+        System.out.println(isValid(input4));
     }
 }
 

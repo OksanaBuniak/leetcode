@@ -17,7 +17,6 @@ public class strStr {
                     return i;
                 }
             }
-
         }
         return -1;
     }
@@ -33,3 +32,4 @@ public class strStr {
     }
 
 }
+/* 2 -1 4 0 0 0 4 */

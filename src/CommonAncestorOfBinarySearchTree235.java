@@ -7,7 +7,7 @@ public class CommonAncestorOfBinarySearchTree235 {
         TreeNode(int x) { val = x; }
     }
 
-    public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    /* public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (p.val > q.val) {
             TreeNode temp = p;
             p = q;
@@ -28,6 +28,22 @@ public class CommonAncestorOfBinarySearchTree235 {
             }
         }
         return common;
+    } */
+
+    public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (p.val == root.val || q.val == root.val) {
+            return root;
+        }
+
+        if ((p.val < root.val && q.val > root.val) || (p.val > root.val && q.val < root.val)) {
+            return root;
+        }
+
+        if (p.val > root.val && q.val > root.val) {
+            return lowestCommonAncestor(root.right, p, q);
+        } else {
+            return lowestCommonAncestor(root.left, p, q);
+        }
     }
 
     public static void addRight(TreeNode parent, TreeNode child) {

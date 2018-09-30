@@ -32,5 +32,6 @@ public class CountAndSay {
 
     public static void main(String[] args) {
         System.out.println(countAndSay(7));
-    }
+    } //13112221
 }
+

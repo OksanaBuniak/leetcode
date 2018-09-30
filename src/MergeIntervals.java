@@ -26,7 +26,7 @@ public class MergeIntervals {
             return intervals;
         }
 
-        List<Interval> output = new ArrayList<>();
+/*        List<Interval> output = new ArrayList<>();
         Interval element = new Interval();
         int size = intervals.size();
 
@@ -54,7 +54,20 @@ public class MergeIntervals {
         }
         output.add(element);
 
-        return output;
+        return output; */
+
+        Collections.sort(intervals, (a, b) -> a.start - b.start);
+        LinkedList<Interval> result = new LinkedList<>();
+        result.add(intervals.get(0));
+
+        for (int i = 1; i < intervals.size(); i++) {
+            if (intervals.get(i).start <= result.getLast().end) {
+                result.getLast().end = Math.max(result.getLast().end, intervals.get(i).end);
+            } else {
+                result.add(intervals.get(i));
+            }
+        }
+        return result;
     }
 
     public static void main(String[] args) {
@@ -77,7 +90,10 @@ public class MergeIntervals {
 
         List<Interval> output = merge(input);
 
-        System.out.println(output);
+        for (Interval el : output) {
+            System.out.print(el.start + " " + el.end + " ");
+            System.out.println();
+        }
     }
 
 }

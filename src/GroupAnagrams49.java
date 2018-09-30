@@ -4,7 +4,7 @@ public class GroupAnagrams49 {
 
     public static List<List<String>> groupAnagrams(String[] strs) {
         if (strs.length == 0) return new ArrayList<>();
-        HashMap<String, List> anagrams = new HashMap<>();
+        HashMap<String, List<String>> anagrams = new HashMap<>();
 
         int[] letterCount = new int[26];
         for (String s : strs) {
@@ -14,11 +14,12 @@ public class GroupAnagrams49 {
                 letterCount[letter]++;
             }
 
-            StringBuilder sb = new StringBuilder();
-            for (int j : letterCount) {
-                sb.append(j + ",");
-            }
-            String word = sb.toString();
+//            StringBuilder sb = new StringBuilder();
+//            for (int j : letterCount) {
+//                sb.append(j + ",");
+//            }
+//            String word = sb.toString();
+            String word = Arrays.toString(letterCount);
 
             if (!anagrams.containsKey(word)) {
                 anagrams.put(word, new ArrayList<>());
@@ -26,7 +27,7 @@ public class GroupAnagrams49 {
             anagrams.get(word).add(s);
         }
 
-        return new ArrayList(anagrams.values());
+        return new ArrayList<>(anagrams.values());
     }
 
     public static void main(String[] args) {

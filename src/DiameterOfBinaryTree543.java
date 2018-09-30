@@ -13,19 +13,24 @@ public class DiameterOfBinaryTree543 {
         if (root == null) {
             return 0;
         }
-        height(root);
-        return max;
+        MaxCounter maxCounter = new MaxCounter();
+        height(root, maxCounter);
+        return maxCounter.max;
     }
 
-    public static int height(TreeNode curr) {
+    private static class MaxCounter {
+        int max = 0;
+    }
+
+    public static int height(TreeNode curr, MaxCounter maxCounter) {
         if (curr == null) {
             return 0;
         }
 
-        int left = height(curr.left);
-        int right = height(curr.right);
+        int left = height(curr.left, maxCounter);
+        int right = height(curr.right, maxCounter);
 
-        max = Math.max(max, left + right);
+        maxCounter.max = Math.max(maxCounter.max, left + right);
         return Math.max(left, right) + 1;
     }
 

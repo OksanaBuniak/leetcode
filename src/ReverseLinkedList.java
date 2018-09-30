@@ -10,16 +10,21 @@ public class ReverseLinkedList {
         if (head == null) {
             return null;
         }
-        ListNode current = head.next;
-        ListNode next = head;
 
-        while (current != null) {
-            next.next = current.next;
-            current.next = head;
-            head = current;
-            current = next.next;
+        ListNode prev = null;
+        ListNode cur = head;
+        ListNode next = cur.next;
+
+        while (cur != null) {
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+            if (next != null) {
+                next = next.next;
+            }
         }
-        return head;
+
+        return prev;
     }
 
     public static ListNode createList(int... numbers) {

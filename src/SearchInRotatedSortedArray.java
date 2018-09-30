@@ -9,17 +9,11 @@ public class SearchInRotatedSortedArray {
             if (target == nums[mid]) {
                 return mid;
             }
-            if (target == nums[low]) {
-                return low;
-            }
-            if (target == nums[high]) {
-                return high;
-            }
             if (isininterval(nums[low], nums[mid], target)) {
                 high = mid - 1;
-            } else if (isininterval(nums[mid], nums[high], target)) {
+            } else {
                 low = mid + 1;
-            } else return -1;
+            }
         }
         return -1;
     }

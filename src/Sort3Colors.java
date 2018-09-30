@@ -1,7 +1,7 @@
 public class Sort3Colors {
 
     public static void sortColors(int[] nums) {
-        int low = 0;
+        /* int low = 0;
         int high = nums.length - 1;
         int mid = 0;
 
@@ -20,7 +20,27 @@ public class Sort3Colors {
             } else if (nums[mid] == 1) {
                 mid++;
             }
+        } */
+
+        int i = 0;
+        int j = nums.length - 1;
+        int k = 0;
+
+        while (k <= j) {
+            if (nums[k] == 1) {
+                k++;
+            } else if (nums[k] == 0) {
+                nums[k] = nums[i];
+                nums[i] = 0;
+                i++;
+                k++;
+            } else {
+                nums[k] = nums[j];
+                nums[j] = 2;
+                j--;
+            }
         }
+
         for (int num : nums) {
             System.out.print(num);
         }

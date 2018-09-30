@@ -3,7 +3,7 @@ import java.util.List;
 
 public class BinaryTreePaths257 {
 
-    List<String> result = new LinkedList<>();
+    static List<String> result = new LinkedList<>();
 
     public static class TreeNode {
         int val;
@@ -13,26 +13,25 @@ public class BinaryTreePaths257 {
     }
 
     public List<String> binaryTreePaths(TreeNode root) {
+        List<String> result = new LinkedList<>();
         if (root != null) {
-            stringBuilder(root, "");
+            stringBuilder(root, "", result);
         }
         return result;
     }
 
-    public void stringBuilder(TreeNode curr, String path) {
+    public void stringBuilder(TreeNode curr, String path, List<String> result) {
         String currPath = path + curr.val;
         if (curr.right == null && curr.left == null) {
             result.add(currPath);
         }
         if (curr.left != null) {
-            stringBuilder(curr.left, currPath + "->");
+            stringBuilder(curr.left, currPath + "->", result);
         }
         if (curr.right != null) {
-            stringBuilder(curr.right, currPath + "->");
+            stringBuilder(curr.right, currPath + "->", result);
         }
-        return;
     }
-
 
     public static void addRight(TreeNode parent, TreeNode child) {
         parent.right = child;
@@ -69,3 +68,15 @@ public class BinaryTreePaths257 {
 
     }
 }
+
+/*
+1->5->6
+1->5->7->7
+1->2->3
+1->2->4
+1->5->6
+1->5->7->7
+1->2->3
+1->2->4
+1
+ */
